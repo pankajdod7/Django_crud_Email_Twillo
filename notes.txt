@@ -1,0 +1,42 @@
+1) pip install virtualenv(create virtual ennv)
+2) virtualenv virtual_env(name to virtual env)
+3) acytivate it virtual_env--Scripts -- activate
+4) pip install django
+5) pip install django-crispy-forms
+6) pip install pillow
+7) pip install mysqlclient
+8) django-admin startproject projectname
+9) django-admin startapp appname or py manage.py startapp appname
+10) settings -- Installed appp --- register your app
+
+
+Database Connection :
+mysql :
+ DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'demodb',
+        'USER': 'root',
+        'PASSWORD':'root'
+    }
+}
+
+
+Staic files -- Media files
+for complete path -- import os ---in settings.py
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static"),]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+project level url: 
+
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+if settings.DEBUG:
+    		urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
